@@ -1,4 +1,5 @@
 from django.db import models # imports the models class information
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 # Model will save data to the database, using ORM, object relational mapping
@@ -14,7 +15,7 @@ class Candidate(models.Model):
 
 
 class Score(models.Model):
-    score = models.FloatField() # Will always be a float number between 1 and 100
+    score = models.FloatField(validators =[MinValueValidator(0), MaxValueValidator(100)]) # Will always be a float number between 1 and 100
     candidate_ref = models.CharField(max_length = 8)
 
     ##Added candidate reference to score class so that a request for all that candidates scores is possible.
