@@ -10,11 +10,11 @@ from django.db import models # imports the models class information
 
 class Candidate(models.Model):
     name = models.CharField(max_length = 255) ## no limit on characters, but prevents long string injection
-    candidate_reference = models.CharField(max_length = 8) # Will always be an unique 8 character code
+    candidate_ref = models.CharField(max_length = 8) # Will always be an unique 8 character code
 
 
 class Score(models.Model):
     score = models.FloatField() # Will always be a float number between 1 and 100
-    candidate_reference = models.CharField(max_length = 8)
+    candidate_ref = models.CharField(max_length = 8)
 
     ##Added candidate reference to score class so that a request for all that candidates scores is possible.

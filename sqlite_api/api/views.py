@@ -12,18 +12,12 @@ from . serializers import CandidateSerializer, ScoreSerializer
 class ScoreViewSet(viewsets.ModelViewSet):
     queryset = Score.objects.all()
     serializer_class = ScoreSerializer
-# Will handle a return of `all` scores - need to edit this
+# Will handle a return GET of `all` scores and receive a POST
+
 
 class CandidateViewSet(viewsets.ModelViewSet):
     queryset = Candidate.objects.all()
     serializer_class = CandidateSerializer
-# Will handle a return of all candidates
+# Will handle a return GET of all candidates and eceive a POST
 
 
-def get_candidate(request, candidate_ref=None):
-    message = f'You submitted candidate ref {candidate_ref}'
-    return HttpResponse(message)
-
-    scores = Score.objects.all({candidate_ref})
-
-    return render(request, "index.html", {"score": scores})

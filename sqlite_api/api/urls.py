@@ -7,6 +7,7 @@ router = routers.DefaultRouter()
 router.register(r'candidates', views.CandidateViewSet)
 router.register(r'scores', views.ScoreViewSet)
 
+
 urlpatterns =[
     # path('candidate/<candidate_ref>/', views.get_candidate)  
     #incoming URL (request) , returned view
