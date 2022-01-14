@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'api.apps.ApiConfig',         ##package.module.Class  
+    'rest_framework'              ## tells Django to check for it
 ]
 
 MIDDLEWARE = [
