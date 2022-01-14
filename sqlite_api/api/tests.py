@@ -1,3 +1,5 @@
 from django.test import TestCase
 
-# Create your tests here.
+# 
+
+# Do not know how to do Python unit testing as yet.

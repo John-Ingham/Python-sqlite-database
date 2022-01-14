@@ -1,6 +1,5 @@
 from django.db import models # imports the models class information
-from django.core.validators import MaxValueValidator, MinValueValidator
-
+from django.core.validators import MaxValueValidator, MinValueValidator, MinLengthValidator, MaxLengthValidator
 
 # Model will save data to the database, using ORM, object relational mapping
 # Avoids writing SQL, Django does this for us.
@@ -11,11 +10,11 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Candidate(models.Model):
     name = models.CharField(max_length = 255) ## no limit on characters, but prevents long string injection
-    candidate_ref = models.CharField(max_length = 8) # Will always be an unique 8 character code
+    candidate_ref = models.CharField(max_length = 8, validators = [MinLengthValidator(8), MaxLengthValidator(8)]) # Will always be an unique 8 character code
 
 
 class Score(models.Model):
     score = models.FloatField(validators =[MinValueValidator(0), MaxValueValidator(100)]) # Will always be a float number between 1 and 100
-    candidate_ref = models.CharField(max_length = 8)
+    candidate_ref = models.CharField(max_length = 8, validators = [MinLengthValidator(8), MaxLengthValidator(8)])
 
     ##Added candidate reference to score class so that a request for all that candidates scores is possible.
